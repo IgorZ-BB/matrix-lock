@@ -38,8 +38,11 @@ async function run() {
 					const retryDelay = core.getInput("retry-delay")
 
 					const matrixLockArtifact = await artifactClient.getArtifact(
-						ARTIFACT_NAME,
-						workspace
+						ARTIFACT_NAME
+					)
+
+					core.info(
+						"Matrix lock: " + JSON.stringify(matrixLockArtifact)
 					)
 
 					shouldContinue = false
