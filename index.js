@@ -37,18 +37,12 @@ async function run() {
 					const retryCount = core.getInput("retry-count")
 					const retryDelay = core.getInput("retry-delay")
 
-					const matrixLockArtifact = await artifactClient.getArtifact(
-						ARTIFACT_NAME
-					)
-
-					core.info(
-						"Matrix lock: " + JSON.stringify(matrixLockArtifact)
-					)
-
 					shouldContinue = false
 
 					for (let index = 0; index < retryCount; index++) {
 						core.info(`Try: ${index + 1}/${retryCount}`)
+						const matrixLockArtifact =
+							await artifactClient.getArtifact(ARTIFACT_NAME)
 						const downloadRespone =
 							await artifactClient.downloadArtifact(
 								matrixLockArtifact.artifact.id,
