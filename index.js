@@ -3,8 +3,8 @@ const artifact = require("@actions/artifact")
 const fs = require("fs")
 const path = require("path")
 
-const FILE_NAME = "matrix-lock-17c3b450-53fd-4b8d-8df8-6b5af88022dc.lock"
-const ARTIFACT_NAME = "matrix-lock"
+const FILE_NAME = "matrixtest.lock"
+const ARTIFACT_NAME = "matrixlocktest"
 
 async function run() {
 	try {
