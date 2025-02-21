@@ -1,5 +1,5 @@
 const core = require("@actions/core")
-const artifact = require("@actions/artifact")
+const { DefaultArtifactClient } = require("@actions/artifact")
 const fs = require("fs")
 const path = require("path")
 
@@ -8,7 +8,7 @@ const ARTIFACT_NAME = "matrixlocktest"
 
 async function run() {
 	try {
-		const artifactClient = artifact.create()
+		const artifactClient = new DefaultArtifactClient()
 		const workspace = process.env.GITHUB_WORKSPACE
 		const fullPath = path.join(workspace, FILE_NAME)
 
