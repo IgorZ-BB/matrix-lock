@@ -99,7 +99,7 @@ async function run() {
 					fs.writeFileSync(fullPath, lockFile)
 
 					const removeResponse = await artifactClient.deleteArtifact(
-						matrixLockArtifact.artifact.id
+						ARTIFACT_NAME
 					)
 
 					const uploadResponseB = await artifactClient.uploadArtifact(
