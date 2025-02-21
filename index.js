@@ -37,13 +37,18 @@ async function run() {
 					const retryCount = core.getInput("retry-count")
 					const retryDelay = core.getInput("retry-delay")
 
+					const matrixLockArtifact = await artifactClient.getArtifact(
+						ARTIFACT_NAME,
+						workspace
+					)
+
 					shouldContinue = false
 
 					for (let index = 0; index < retryCount; index++) {
 						core.info(`Try: ${index + 1}/${retryCount}`)
 						const downloadRespone =
 							await artifactClient.downloadArtifact(
-								ARTIFACT_NAME,
+								matrixLockArtifact.id,
 								workspace,
 								{ continueOnError: false }
 							)
