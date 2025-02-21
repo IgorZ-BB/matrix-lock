@@ -51,7 +51,7 @@ async function run() {
 						core.info(`Try: ${index + 1}/${retryCount}`)
 						const downloadRespone =
 							await artifactClient.downloadArtifact(
-								matrixLockArtifact.id,
+								matrixLockArtifact.artifact.id,
 								workspace,
 								{ continueOnError: false }
 							)
@@ -79,9 +79,14 @@ async function run() {
 			case "continue":
 				{
 					core.info("Continue")
+
+					const matrixLockArtifact = await artifactClient.getArtifact(
+						ARTIFACT_NAME
+					)
+
 					const downloadRespone =
 						await artifactClient.downloadArtifact(
-							ARTIFACT_NAME,
+							matrixLockArtifact.artifact.id,
 							workspace,
 							{ continueOnError: false }
 						)
